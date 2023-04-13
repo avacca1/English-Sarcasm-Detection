@@ -1,10 +1,10 @@
 # English-Sarcasm-Detection
 <h2>Data Preprocessing</h2>
-In this section, we load and process data using the SarcasmDataset class. To create a SarcasmDataset, input the path of the data csv file and the tokenizer. Later use pytorch to crate a dataloader for the dataset (in the main script).
+We load and process data using the SarcasmDataset class. To create a SarcasmDataset, input the path of the data csv file and the tokenizer. Later use pytorch to crate a dataloader for the dataset (in the main script).
 
 <h2>Model</h2>
 
-In this section, we define the model. We will use the ensemble method, which would use multiple models and combine their outputs to get the final prediction. The models we will use are: 
+We define the model. We will use the ensemble method, which would use multiple models and combine their outputs to get the final prediction. The models we will use are: 
 1. Custom LSTM model 
 2. RoBERTa model 
 3. BERT model (the 2nd and 3rd model are pretained, so can be change in the future to other pretrained models if needed).
