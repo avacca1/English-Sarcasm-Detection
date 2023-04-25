@@ -15,7 +15,7 @@ The pretrained models are defined in PretrainedModelPlus class, which can take i
 
 <h2>Model Descriptions</h2>
 
-### [bertweet-base-sentiment-analysis](https://huggingface.co/finiteautomata/bertweet-base-sentiment-analysis)
+### [finiteautomata/bertweet-base-sentiment-analysis](https://huggingface.co/finiteautomata/bertweet-base-sentiment-analysis)
 
 
 Paper: 
@@ -49,6 +49,10 @@ Single linear layer to fine tune output of model. Input dimension is the size of
 
 <h3>Ensembling</h3>
 The models are trained separately, and the outputs are combined by averaging their probability. This average is then compared to the threshold for classificaiton. This is all implemented in the predict function.
+
+### Output 
+
+The output of each model (model 1, model 2, model 3 / bertweet-base-sentiment-analysis, bertweet-irony, bertweet-base-irony), are labeled output-1.csv, output-2.csv, output-3.csv respectively. The combined output is labeled output-123.csv.
 
 <h2>Evaluation Metrics</h2>
 We use the f1 score as the evaluation matrics. F1 score is computed for each individual model as well as the final result.
