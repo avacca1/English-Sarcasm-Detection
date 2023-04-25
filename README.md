@@ -1,48 +1,57 @@
 # English-Sarcasm-Detection
 <h2>Data Preprocessing</h2>
-We load and process data using the SarcasmDataset class. To create a SarcasmDataset, input the path of the data csv file and the tokenizer. Later use pytorch to crate a dataloader for the dataset (in the main script).
+We define the SarcasmDataset class, which we use to load and pre-process the sarcasm data. This includes encoding emojis as text tokens instead of their unicode representations. To create a SarcasmDataset, input the path of the data csv file and the tokenizer. We then use pytorch to crate a dataloader for the dataset (can be found in the main script).
 
-<h2>Model</h2>
+<h2>Models</h2>
 
-We define the model. We will use the ensemble method, which would use multiple models and combine their outputs to get the final prediction. The models we will use are: 
-1. Custom LSTM model 
-2. RoBERTa model 
-3. BERT model (the 2nd and 3rd model are pretained, so can be change in the future to other pretrained models if needed).
+To complete the task we use the ensemble method, which trains multiple models and combines their outputs to get a final prediction. The models we will use are:
+1. finiteautomata/bertweet-base-sentiment-analysis
+2. pysentimiento/bertweet-irony
+3. cardiffnlp/bertweet-base-irony
 
-The custom LSTM model is a simple LSTM model is defined in CustomLSTM class. The pretrained models are defined in PretrainedModelPlus class, which can take in any pretrained model and add a hidden layer and output layer on top of it.
+Each model is based upon BERTweet, a RoBERTa model trained on English Tweets. [RoBERTa](https://huggingface.co/docs/transformers/model_doc/roberta) is an iteration of BERT that modifies some key hyperparameters, removes the next sentence pretraining objective, and is trained with larger mini-batches and higher learning rates.
 
-<h2>Architecture</h2>
-<h3>Custom LSTM</h3>
+The pretrained models are defined in PretrainedModelPlus class, which can take in any pretrained model and add a hidden layer and output layer on top of it in order to classify it's output.
 
-Embedding layer: 50d GloVe embedding
+<h2>Model Descriptions</h2>
 
-LSTM layer: bidirectional LSTM
+### [bertweet-base-sentiment-analysis](https://huggingface.co/finiteautomata/bertweet-base-sentiment-analysis)
 
-Hidden layer: two linear layers with non-linear activation function
 
-Output layer: linear with output size 1
+Paper: 
+Title: pysentimiento: A Python Toolkit for Sentiment Analysis and SocialNLP tasks
+author: Juan Manuel Pérez and Juan Carlos Giudici and Franco Luque},
+year={2021},
+eprint={2106.09462},
+archivePrefix={arXiv},
+primaryClass={cs.CL}
 
-<h3>RoBERTa</h3>
 
-RoBERTa model: pretrained RoBERTa model, freezed the weights
 
-Hidden layer: two linear layers with non-linear activation function
 
-Output layer: linear with output size 1
+RoBERTa model trained on English tweets for the purpose of sentiment analysis. Trained on SemEval 2017 corpus. Uses Pos, Neg, Neu labels. 
 
-<h3>BERT</h3>
+### [pysentimiento/bertweet-irony](https://huggingface.co/pysentimiento/bertweet-irony)
 
-BERT model: pretrained BERT model, freezed the weights
 
-Hidden layer: two linear layers with non-linear activation function
 
-Output layer: linear with output size 1
+RoBERTa model trained with SemEval 2018 dataset Task 3. Based on BERTweet. Positive marks irony, negative marks non ironic.
+
+### [cardiffnlp/bertweet-base-irony](https://huggingface.co/cardiffnlp/bertweet-base-irony)
+
+
+
+RoBERTa model similar to bertweet irony, but with fewer encoder layers. 
+
+<h3>Linear Layer</h3>
+
+Single linear layer to fine tune output of model. Input dimension is the size of the hidden state of the pretrained model.This is followed by a linear layer of size 64. The output dimension is of size 1 for classification.
 
 <h3>Ensembling</h3>
-The models are trained separately and the outputs are combined using combined probability. This is implemented in the predict function.
+The models are trained separately, and the outputs are combined by averaging their probability. This average is then compared to the threshold for classificaiton. This is all implemented in the predict function.
 
-<h2>Evaluation Matrics</h2>
-We use the f1 score as the evaluation matrics.
+<h2>Evaluation Metrics</h2>
+We use the f1 score as the evaluation matrics. F1 score is computed for each individual model as well as the final result.
 
 <h2>Main Script</h2>
 Instructions for running the main script:
