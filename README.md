@@ -53,13 +53,21 @@ The models are trained separately, and the outputs are combined by averaging the
 <h2>Evaluation Metrics</h2>
 We use the f1 score as the evaluation matrics. F1 score is computed for each individual model as well as the final result.
 
-<h2>Main Script</h2>
-Instructions for running the main script:
+## Main Script
+### Instructions for running the main script (More details in notebook):
 
-1. Download the data from here: https://github.com/iabufarha/iSarcasmEval
+Download the data from [here](https://github.com/iabufarha/iSarcasmEval).
 
-2. Create the dataset and dataloader for each of the models.
+Create the dataset and dataloader for each of the models.
 
-3. Create and Train model
+Initialize the three models.
 
-4. Predict and evaluate f1 score on test set
+a. Train the three models 
+
+OR 
+
+b. Load the three previously trained and fine tuned models.
+
+Predict and evaluate f1 score on test set for each individual model.
+
+Predict and evaluate f1 score on test set for ensemble of models.
