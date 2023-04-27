@@ -50,28 +50,25 @@ Single linear layer to fine tune output of model. Input dimension is the size of
 <h3>Ensembling</h3>
 The models are trained separately, and the outputs are combined by averaging their probability. This average is then compared to the threshold for classificaiton. This is all implemented in the predict function.
 
-### Output 
-
-The output of each model (model 1, model 2, model 3 / bertweet-base-sentiment-analysis, bertweet-irony, bertweet-base-irony), are labeled output-1.csv, output-2.csv, output-3.csv respectively. The combined output is labeled output-123.csv.
-
-<h2>Evaluation Metrics</h2>
+## Evaluation Metrics
 We use the f1 score as the evaluation matrics. F1 score is computed for each individual model as well as the final result.
 
-## Main Script
-### Instructions for running the main script (More details in notebook):
+## Result/Output
 
-Download the data from [here](https://github.com/iabufarha/iSarcasmEval).
+The output of each model (model 1, model 2, model 3 / bertweet-base-sentiment-analysis, bertweet-irony, bertweet-base-irony), are labeled output-1.csv, output-2.csv, output-3.csv respectively. The ensemble output file is output-123.csv.
 
-Create the dataset and dataloader for each of the models.
+**Final Result**: F1=53.8 (ensemble of 3 models, output-123.csv)
 
-Initialize the three models.
+## Main Script Instructions (More details in notebook)
 
-a. Train the three models 
+1. Download the data from [here](https://github.com/iabufarha/iSarcasmEval).
 
-OR 
+2. Create the dataset and dataloader for each of the models.
 
-b. Load the three previously trained and fine tuned models.
+3. Initialize the three models.
 
-Predict and evaluate f1 score on test set for each individual model.
+4. a. Train the three models OR b. Load the three previously trained and continue to fine tune models.
 
-Predict and evaluate f1 score on test set for ensemble of models.
+5. Predict and evaluate f1 score on test set for each individual model (just for comparison).
+
+6. Predict and evaluate f1 score on test set for ensemble of models.
