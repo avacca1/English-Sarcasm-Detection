@@ -58,7 +58,7 @@ We use the f1 score as the evaluation matrics. F1 score is computed for each ind
 
 The output of each model (model 1, model 2, model 3 / bertweet-base-sentiment-analysis, bertweet-irony, bertweet-base-irony), are labeled output-1.csv, output-2.csv, output-3.csv respectively. The ensemble output file is output-123.csv.
 
-**Final Result**: F1=53.8 (ensemble of 3 models, output-123.csv)
+**Final Result**: F1=50.3 (ensemble of 3 models, output-123.csv)
 
 ## Main Script Instructions (More details in notebook)
 
