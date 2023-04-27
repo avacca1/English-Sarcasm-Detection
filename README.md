@@ -1,6 +1,6 @@
 # English-Sarcasm-Detection
 <h2>Data Preprocessing</h2>
-We define the SarcasmDataset class, which we use to load and pre-process the sarcasm data. This includes encoding emojis as text tokens instead of their unicode representations. To create a SarcasmDataset, input the path of the data csv file and the tokenizer. We then use pytorch to crate a dataloader for the dataset (can be found in the main script).
+We define the SarcasmDataset class, which we use to load and pre-process the sarcasm data. This includes encoding emojis as text tokens instead of their unicode representations, and convert usernames and urls to single token. To create a SarcasmDataset, input the path of the data csv file and the tokenizer. We then use pytorch to crate a dataloader for the dataset (can be found in the main script).
 
 <h2>Models</h2>
 
