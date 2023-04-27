@@ -18,24 +18,21 @@ The pretrained models are defined in PretrainedModelPlus class, which can take i
 ### [finiteautomata/bertweet-base-sentiment-analysis](https://huggingface.co/finiteautomata/bertweet-base-sentiment-analysis)
 
 
-Paper: 
+#### Paper: 
 Title: pysentimiento: A Python Toolkit for Sentiment Analysis and SocialNLP tasks
-author: Juan Manuel Pérez and Juan Carlos Giudici and Franco Luque},
-year={2021},
-eprint={2106.09462},
-archivePrefix={arXiv},
-primaryClass={cs.CL}
 
+author: Juan Manuel Pérez and Juan Carlos Giudici and Franco Luque
 
+year: 2021
+
+eprint: 2106.09462
 
 
 RoBERTa model trained on English tweets for the purpose of sentiment analysis. Trained on SemEval 2017 corpus. Uses Pos, Neg, Neu labels. 
 
 ### [pysentimiento/bertweet-irony](https://huggingface.co/pysentimiento/bertweet-irony)
 
-
-
-RoBERTa model trained with SemEval 2018 dataset Task 3. Based on BERTweet. Positive marks irony, negative marks non ironic.
+RoBERTa model trained with SemEval 2018 dataset Task 3. Based on BERTweet. 
 
 ### [cardiffnlp/bertweet-base-irony](https://huggingface.co/cardiffnlp/bertweet-base-irony)
 
@@ -61,14 +58,16 @@ The output of each model (model 1, model 2, model 3 / bertweet-base-sentiment-an
 
 ## Main Script Instructions (More details in notebook)
 
-1. Download the data from [here](https://github.com/iabufarha/iSarcasmEval).
+### 1. Download the data from [here](https://github.com/iabufarha/iSarcasmEval).
 
-2. Create the dataset and dataloader for each of the models.
+### 2. Run all cells below Main Script Header. Script does the following:
 
-3. Initialize the three models.
+  Creates the dataset and dataloader for each of the models.
+  
+  Initializes the three models.
+  
+  a. Trains the three models OR b. Loads the three previously trained and continue to fine tune models (depends on presence of files model1.pt, model2.pt, model3.pt).
 
-4. a. Train the three models OR b. Load the three previously trained and continue to fine tune models.
+  Predicts and evaluate f1 score on test set for each individual model (just for comparison).
 
-5. Predict and evaluate f1 score on test set for each individual model (just for comparison).
-
-6. Predict and evaluate f1 score on test set for ensemble of models.
+  Predicts and evaluate f1 score on test set for ensemble of models.
